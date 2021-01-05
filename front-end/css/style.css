@@ -1,0 +1,44 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  background-color: #f3eaf2;
+}
+
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px;
+}
+
+header ul img {
+  width: 75%;
+}
+
+.shopping-cart-icon {
+  width: 6vw;
+  cursor: pointer;
+}
+
+.shopping-cart-holder button {
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 40px;
+  outline: none;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+}
+/*# sourceMappingURL=style.css.map */
