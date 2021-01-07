@@ -34,4 +34,16 @@ header {
 main {
     display: grid;
     grid-template-columns: repeat(2, 50%);
+    margin: 3% 10% 3% 10%;
+}
+
+.item-holder {
+    box-shadow: grey 10px 15px;
+    background-color: whitesmoke;
+    padding: 5%;
+    margin: 5%;
+}
+
+.item-holder-img {
+    width: 100%;
 }
