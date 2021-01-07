@@ -9,6 +9,8 @@ const getAll = async() => {
 }
 
 
+
+
 describe('fetch data', () => {
     let data
     beforeEach(async() => {
