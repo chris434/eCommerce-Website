@@ -17,11 +17,12 @@ const createTemplate = async(res) => {
     document.querySelector('main').innerHTML = template
 }
 const productTemplate = (data) => {
-    let { name, price, description, imageUrl } = data
-    return `<div class="item-holder"><a href="#"><img class="item-holder-img" src="${imageUrl}"></a><h2><a href="#">${name}</a></h2>
-        <span>${formattedPrice(price)}</span><p>${formattedDescription(description)}</p></div>
+    let { lenses, name, price, description, imageUrl } = data
+    return `<div class="item-holder"><a href="#"><div class="zoom"><img class="item-holder-img" src="${imageUrl}"></div></a><h2><a href="#">${name}</a></h2>
+       <hr><span>${formattedPrice(price)}</span><p>${formattedDescription(description)}</p><button><span><i class="fas fa-shopping-cart"></i> add to cart</span></button></div>
         `
 }
+
 const formattedPrice = (price) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)
 }

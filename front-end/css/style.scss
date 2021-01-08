@@ -26,7 +26,7 @@ header {
         border: transparent;
         background-color: transparent;
         cursor: pointer;
-        font-size: 40px;
+        font-size: 50px;
         outline: none;
     }
 }
@@ -42,8 +42,53 @@ main {
     background-color: whitesmoke;
     padding: 5%;
     margin: 5%;
+    img:hover {
+        transform: scale(1.2);
+    }
+    h2 a {
+        color: black;
+        text-decoration: none;
+    }
+    h2 a:hover {
+        color: rgb(253, 128, 36);
+    }
+    h2 {
+        margin: 5% 0% 0% 0%;
+    }
+    hr {
+        margin-bottom: 3%;
+    }
+    span {
+        font-size: 25px;
+        margin: 10% 0% 10% 0%;
+    }
+    p {
+        margin: 5% 0% 5% 0%;
+    }
+    button {
+        background-color: rgb(253, 128, 36);
+        border: 3px rgb(253, 128, 36) solid;
+        border-radius: 5%;
+        font-size: 2vw;
+        outline: none;
+        padding: 2%;
+    }
+    button:hover {
+        background-color: white;
+        cursor: pointer;
+    }
+    .zoom {
+        overflow: hidden;
+    }
 }
 
 .item-holder-img {
     width: 100%;
+}
+
+@media (max-width: 500px) {
+    main {
+        display: block;
+        margin: 0% 5% 20% 5%;
+    }
 }
