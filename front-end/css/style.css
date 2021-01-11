@@ -43,26 +43,9 @@ main {
   margin: 3% 10% 3% 10%;
 }
 
-.item-holder {
-  -webkit-box-shadow: grey 10px 15px;
-          box-shadow: grey 10px 15px;
-  background-color: whitesmoke;
-  padding: 5%;
-  margin: 5%;
-}
-
-.item-holder img:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-}
-
-.item-holder h2 a {
-  color: black;
-  text-decoration: none;
-}
-
-.item-holder h2 a:hover {
-  color: #fd8024;
+.product {
+  display: block;
+  margin: 3% 25% 3% 25%;
 }
 
 .item-holder h2 {
@@ -100,14 +83,100 @@ main {
   overflow: hidden;
 }
 
+.display {
+  -webkit-box-shadow: grey 10px 15px;
+          box-shadow: grey 10px 15px;
+  background-color: whitesmoke;
+  padding: 5%;
+  margin: 5%;
+}
+
+.display img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.display h2 a {
+  color: black;
+  text-decoration: none;
+}
+
+.display h2 a:hover {
+  color: #fd8024;
+}
+
 .item-holder-img {
   width: 100%;
+}
+
+.info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1% 0% 4% 0%;
+}
+
+.info-container span,
+.info-container form {
+  margin: 0px;
+  padding: 2%;
+}
+
+.info-container select,
+.info-container label {
+  font-size: 20px;
+}
+
+.info-container label {
+  font-weight: bold;
+}
+
+.info-container button {
+  padding: 1%;
+}
+
+.info-container button span {
+  padding: 0px;
+  font-size: 20px;
+}
+
+.description {
+  font-size: 20px;
+}
+
+@media (max-width: 1089px) {
+  .product {
+    display: block;
+    margin: 3% 20% 3% 20%;
+  }
+}
+
+@media (max-width: 907px) {
+  .product {
+    display: block;
+    margin: 3% 10% 3% 10%;
+  }
+}
+
+@media (max-width: 767px) {
+  .info-container {
+    display: block;
+  }
+  .info-container * {
+    margin: 5% 0% 5% 0%;
+  }
+  .info-container svg {
+    margin: 0px;
+  }
 }
 
 @media (max-width: 500px) {
   main {
     display: block;
-    margin: 0% 5% 20% 5%;
+    margin: 0% 5% 0% 5%;
   }
 }
 /*# sourceMappingURL=style.css.map */

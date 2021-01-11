@@ -37,21 +37,12 @@ main {
     margin: 3% 10% 3% 10%;
 }
 
+.product {
+    display: block;
+    margin: 3% 25% 3% 25%;
+}
+
 .item-holder {
-    box-shadow: grey 10px 15px;
-    background-color: whitesmoke;
-    padding: 5%;
-    margin: 5%;
-    img:hover {
-        transform: scale(1.2);
-    }
-    h2 a {
-        color: black;
-        text-decoration: none;
-    }
-    h2 a:hover {
-        color: rgb(253, 128, 36);
-    }
     h2 {
         margin: 5% 0% 0% 0%;
     }
@@ -82,13 +73,85 @@ main {
     }
 }
 
+.display {
+    box-shadow: grey 10px 15px;
+    background-color: whitesmoke;
+    padding: 5%;
+    margin: 5%;
+    img:hover {
+        transform: scale(1.2);
+    }
+    h2 a {
+        color: black;
+        text-decoration: none;
+    }
+    h2 a:hover {
+        color: rgb(253, 128, 36);
+    }
+}
+
 .item-holder-img {
     width: 100%;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 0% 4% 0%;
+    span,
+    form {
+        margin: 0px;
+        padding: 2%;
+    }
+    select,
+    label {
+        font-size: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    button {
+        padding: 1%;
+    }
+    button span {
+        padding: 0px;
+        font-size: 20px;
+    }
+}
+
+.description {
+    font-size: 20px;
+}
+
+@media (max-width: 1089px) {
+    .product {
+        display: block;
+        margin: 3% 20% 3% 20%;
+    }
+}
+
+@media (max-width: 907px) {
+    .product {
+        display: block;
+        margin: 3% 10% 3% 10%;
+    }
+}
+
+@media (max-width: 767px) {
+    .info-container {
+        display: block;
+        * {
+            margin: 5% 0% 5% 0%;
+        }
+        svg {
+            margin: 0px;
+        }
+    }
 }
 
 @media (max-width: 500px) {
     main {
         display: block;
-        margin: 0% 5% 20% 5%;
+        margin: 0% 5% 0% 5%;
     }
 }
