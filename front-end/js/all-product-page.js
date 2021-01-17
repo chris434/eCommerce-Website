@@ -40,6 +40,10 @@ const load = async() => {
             bnt.value = textStatus.value
         })
     })
+    document.querySelector('#cart-button').addEventListener('click', (e) => {
+        window.location.href = 'cart.html'
+
+    })
 
 }
 load()

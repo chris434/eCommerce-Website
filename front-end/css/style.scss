@@ -123,6 +123,112 @@ main {
     font-size: 20px;
 }
 
+.collapse-text {
+    width: 100%;
+    font-size: 2rem;
+    margin: 2%;
+}
+
+.items {
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+    margin: 0% 0% 0% 5%;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.item-hr {
+    margin: 0% 5% 0% 10%;
+    width: 50%;
+}
+
+.cart-container {
+    margin: 0px;
+    display: block;
+}
+
+.product-container {
+    display: flex;
+    img {
+        width: 100%;
+    }
+    margin-top: 2%;
+    padding: 3% 0% 3% 0%;
+}
+
+.left-container {
+    width: 20%;
+}
+
+.cart-info {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    align-items: flex-start;
+    padding-left: 5%;
+}
+
+.delete {
+    background-color: rgb(253, 128, 36);
+    border-radius: 5%;
+    outline: none;
+    padding: 2%;
+}
+
+.delete :hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.cart {
+    display: flex;
+}
+
+.list-container {
+    margin: 0% 0% 0% 5%;
+    width: 50%;
+}
+
+.totalBox {
+    width: 30%;
+    margin: 3% 10% 0% 10%;
+    background-color: whitesmoke;
+    box-shadow: gray 5px 15px;
+    padding: 3%;
+    font-size: 25px;
+    text-align: center;
+    height: 200px;
+    div {
+        display: flex;
+        justify-content: space-between;
+        padding: 10% 0% 10% 0%;
+    }
+    button {
+        margin-top: 5%;
+        width: 100%;
+        background-color: rgb(253, 128, 36);
+        font-size: 2rem;
+        outline: none;
+        border: rgb(253, 128, 36) solid 2px;
+    }
+}
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+    font-size: 20px;
+    button {
+        font-size: 20px;
+        background-color: rgb(253, 128, 36);
+        border: rgb(253, 128, 36) solid 2px;
+        padding: 5%;
+        margin-top: 10%;
+    }
+}
+
 @media (max-width: 1089px) {
     .product {
         display: block;
@@ -150,8 +256,39 @@ main {
 }
 
 @media (max-width: 500px) {
-    main {
+    main,
+    .cart,
+    .cart-info {
         display: block;
         margin: 0% 5% 0% 5%;
+    }
+    .cart-info {
+        * {
+            margin-top: 5%;
+        }
+    }
+    .list-container {
+        width: 100%;
+        .left-container {
+            width: 50%;
+            margin: 0px;
+        }
+    }
+    .totalBox {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+        position: sticky;
+        box-shadow: none;
+        height: auto;
+        width: auto;
+        margin: -5%;
+        padding-bottom: 10%;
+        overflow: auto;
+        div {
+            padding: 0px;
+        }
     }
 }

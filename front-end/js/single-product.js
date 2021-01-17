@@ -1,4 +1,4 @@
-import { formattedPrice, cartNumber, localData, updateCart } from './main.js'
+import { formattedPrice, cartNumber, localData, updateCart, optionsTemplate } from './main.js'
 
 const getId = () => {
     const url = new URL(document.URL)
@@ -29,22 +29,13 @@ const productTemplate = (data) => {
        <button value=${value} class="add-to-cart"><span class="bnt-status"><i class="fas fa-shopping-cart"></i> ${text}</span></button></div><hr><p class=description>${description}</p></div>
         `
 }
-const optionsTemplate = (arry, selected) => {
-    const options = (opt) => {
-        let select = ''
-        if (selected == opt) {
-            select = 'selected'
-        }
-        return `<option ${select} value="${opt}">${opt}</option>`
-    }
-    return `<form><label for="option">options:</label><select id="option" name="option">${arry.map(options).join('')}</select></form>`
-}
+
 
 const load = async() => {
     const data = await fetchProduct()
     await createTemplate(data)
         //update cart
-    document.querySelector('#option').addEventListener('change', (e) => {
+    document.querySelector('.option').addEventListener('change', (e) => {
             let parsedData = JSON.parse(localStorage.getItem('cart'))
             if (parsedData) {
                 parsedData.map(item => {
@@ -59,15 +50,20 @@ const load = async() => {
         //add product to cart
     const updateCartBnt = document.querySelector('.add-to-cart')
     updateCartBnt.addEventListener('click', (e) => {
-        const selectedBox = document.querySelector('#option')
+        const selectedBox = document.querySelector('.option')
         const selected = selectedBox.options[selectedBox.selectedIndex].text
         const value = updateCartBnt.value
         const textStatus = updateCart(selected, value, data)
         updateCartBnt.value = textStatus.value
         document.querySelector('.bnt-status').innerHTML = textStatus.text
     })
+    document.querySelector('#cart-button').addEventListener('click', (e) => {
+        window.location.href = 'cart.html'
+
+    })
 
 }
+
 
 cartNumber()
 load()

@@ -2,6 +2,17 @@
 const formattedPrice = (price) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)
 }
+const optionsTemplate = (arry, selected) => {
+    const options = (opt) => {
+        let select = ''
+        if (selected == opt) {
+            select = 'selected'
+        }
+        return `<option ${select} value="${opt}">${opt}</option>`
+    }
+    return `<form><label for="option">options:</label><select class="option" name="option">${arry.map(options).join('')}</select></form>`
+}
+
 
 //updates the cart number when a item gets added or deleted from the cart
 const cartNumber = () => {
@@ -50,4 +61,5 @@ const updateCart = (option, bntValue, data) => {
 
 }
 
-export { formattedPrice, cartNumber, localData, updateCart }
+
+export { formattedPrice, cartNumber, localData, updateCart, optionsTemplate }
