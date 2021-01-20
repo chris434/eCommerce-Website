@@ -252,12 +252,22 @@ main {
 }
 
 .totalBox button {
-  margin-top: 5%;
   width: 100%;
+  margin-top: 5%;
+}
+
+.orange-button {
+  margin: 0px;
   background-color: #fd8024;
   font-size: 2rem;
+  padding: 2%;
   outline: none;
   border: #fd8024 solid 2px;
+}
+
+.orange-button:hover {
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .cart-empty {
@@ -283,18 +293,48 @@ main {
   margin-top: 10%;
 }
 
-@media (max-width: 1089px) {
-  .product {
-    display: block;
-    margin: 3% 20% 3% 20%;
-  }
+form {
+  font-size: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2% 10% 5% 10%;
 }
 
-@media (max-width: 907px) {
-  .product {
-    display: block;
-    margin: 3% 10% 3% 10%;
-  }
+form div {
+  position: relative;
+}
+
+form div svg {
+  color: yellowgreen;
+  position: absolute;
+  margin-left: -30px;
+  padding-top: 9px;
+}
+
+form input {
+  font-size: 30px;
+  border: 2px black solid;
+  padding-right: 40px;
+}
+
+form * {
+  margin: 2% 0% 0% 0%;
+}
+
+form small {
+  color: red;
+  visibility: hidden;
+}
+
+#ok {
+  color: yellowgreen;
+  visibility: hidden;
+}
+
+#error {
+  color: red;
+  visibility: hidden;
 }
 
 @media (max-width: 767px) {
@@ -306,6 +346,20 @@ main {
   }
   .info-container svg {
     margin: 0px;
+  }
+}
+
+@media (max-width: 1089px) {
+  .product {
+    display: block;
+    margin: 3% 20% 3% 20%;
+  }
+}
+
+@media (max-width: 907px) {
+  .product {
+    display: block;
+    margin: 3% 10% 3% 10%;
   }
 }
 
@@ -344,6 +398,9 @@ main {
   }
   .totalBox div {
     padding: 0px;
+  }
+  input {
+    width: 80%;
   }
 }
 /*# sourceMappingURL=style.css.map */

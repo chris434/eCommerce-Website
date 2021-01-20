@@ -18,7 +18,7 @@ const productTemplate = (data) => {
     ${optionsTemplate(lenses, data.selectedOption)}<button value="${_id}" class="delete">delete</button></div></div><hr>`
 }
 const totalTemplate = () => {
-    return `<div class="totalBox"><span>order summary</span><hr><div><span>Total</span><span class="total-price">${totalPrice()}</span></div><hr><button>order now</button></div>`
+    return `<div class="totalBox"><span>order summary</span><hr><div><span>Total</span><span class="total-price">${totalPrice()}</span></div><hr><button class="orange-button">order now</button></div>`
 }
 const totalPrice = () => {
     let data = JSON.parse(localStorage.getItem('cart'))
@@ -28,6 +28,7 @@ const totalPrice = () => {
     const totalPrice = data.reduce((a, b) => a + b, 0)
     return formattedPrice(totalPrice)
 }
+
 createTemplate()
 document.querySelectorAll('.option').forEach((opt, index) => {
     opt.addEventListener('change', (e) => {
@@ -40,21 +41,53 @@ document.querySelectorAll('.option').forEach((opt, index) => {
     })
 })
 document.querySelectorAll('.product-container').forEach(elm => {
-    elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
-        let data = JSON.parse(localStorage.getItem('cart'))
-        data = data.filter(elm => {
-            if (elm.product._id != e.target.value) {
-                return elm
+        elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
+            let data = JSON.parse(localStorage.getItem('cart'))
+            data = data.filter(elm => {
+                if (elm.product._id != e.target.value) {
+                    return elm
+                }
+            })
+            localStorage.setItem('cart', JSON.stringify(data))
+            document.querySelector('.total-price').innerHTML = totalPrice()
+            cartNumber()
+            elm.remove()
+            if (data.length == 0) {
+                document.querySelector('.cart-active').style.display = 'none'
+                document.querySelector('.cart-empty').style.display = 'flex'
             }
         })
-        localStorage.setItem('cart', JSON.stringify(data))
-        document.querySelector('.total-price').innerHTML = totalPrice()
-        cartNumber()
-        elm.remove()
-        if (data.length == 0) {
-            document.querySelector('.cart-active').style.display = 'none'
-            document.querySelector('.cart-empty').style.display = 'flex'
-        }
     })
+    //form
+const validEmail = (email) => {
+    const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(String(email).toLowerCase());
+}
+document.querySelectorAll('form div').forEach(elm => {
+    const input = elm.querySelector('input')
+    const ok = elm.querySelector('#ok')
+    const error = elm.querySelector('#error')
+    const errorText = elm.querySelector('small')
+
+    const isValid = () => {
+        input.style.borderColor = 'yellowGreen'
+        ok.style.visibility = 'visible'
+        error.style.visibility = 'hidden'
+        errorText.style.visibility = 'hidden'
+    }
+    input.addEventListener('change', (e) => {
+        if (e.target.id == 'email' && validEmail(e.target.value)) {
+            isValid()
+        } else if (e.target.value != '' && e.target.id != 'email') {
+            isValid()
+        } else {
+            input.style.borderColor = 'red'
+            ok.style.visibility = 'hidden'
+            error.style.visibility = 'visible'
+            errorText.style.visibility = 'visible'
+        }
+
+    })
+
 })
 cartNumber()
