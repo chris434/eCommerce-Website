@@ -59,15 +59,16 @@ document.querySelectorAll('.product-container').forEach(elm => {
         })
     })
     //form
+
 const validEmail = (email) => {
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return reg.test(String(email).toLowerCase());
 }
-document.querySelectorAll('form div').forEach(elm => {
-    const input = elm.querySelector('input')
-    const ok = elm.querySelector('#ok')
-    const error = elm.querySelector('#error')
-    const errorText = elm.querySelector('small')
+const validator = (field) => {
+    const input = field.querySelector('input')
+    const ok = field.querySelector('#ok')
+    const error = field.querySelector('#error')
+    const errorText = field.querySelector('small')
 
     const isValid = () => {
         input.style.borderColor = 'yellowGreen'
@@ -75,19 +76,61 @@ document.querySelectorAll('form div').forEach(elm => {
         error.style.visibility = 'hidden'
         errorText.style.visibility = 'hidden'
     }
-    input.addEventListener('change', (e) => {
-        if (e.target.id == 'email' && validEmail(e.target.value)) {
-            isValid()
-        } else if (e.target.value != '' && e.target.id != 'email') {
-            isValid()
-        } else {
-            input.style.borderColor = 'red'
-            ok.style.visibility = 'hidden'
-            error.style.visibility = 'visible'
-            errorText.style.visibility = 'visible'
-        }
 
+    if (input.id == 'email' && validEmail(input.value)) {
+        isValid()
+        return true
+    } else if (input.value != '' && input.id != 'email') {
+        isValid()
+        return true
+    } else {
+        input.style.borderColor = 'red'
+        ok.style.visibility = 'hidden'
+        error.style.visibility = 'visible'
+        errorText.style.visibility = 'visible'
+        return false
+    }
+
+}
+
+
+document.querySelectorAll('#order-form div').forEach(elm => {
+    elm.addEventListener('change', (e) => {
+        validator(elm)
     })
 
 })
+document.querySelector('#order-form').addEventListener('submit', async(e) => {
+    e.preventDefault()
+    let isTrue = true
+    const formDAta = new FormData(e.target)
+    const contact = Object.fromEntries(formDAta.entries())
+
+    let bodyData = { contact: contact, products: ['5be1ed3f1c9d44000030b061'] }
+    console.log(bodyData)
+
+    document.querySelectorAll('#order-form div').forEach(elm => {
+        if (!validator(elm)) {
+            isTrue = false
+        }
+    })
+    if (isTrue) {
+        try {
+            const response = await fetch('http://localhost:3000/api/cameras/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bodyData)
+            })
+            const data = await response.json()
+            localStorage.setItem('orderConfirmed', JSON.stringify(data))
+            location.href = 'oder_response.html'
+        } catch (e) {
+            console.log(e)
+        }
+    }
+})
+
+
 cartNumber()
