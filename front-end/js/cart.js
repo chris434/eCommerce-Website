@@ -40,6 +40,17 @@ document.querySelectorAll('.option').forEach((opt, index) => {
         }
     })
 })
+document.querySelectorAll('.collapse').forEach(section => {
+    section.addEventListener('click', (e) => {
+        let header = section.parentNode.querySelector('.collapse-body')
+        console.log(header)
+        if (header.classList.contains('hidden')) {
+            return header.classList.remove('hidden')
+        }
+        header.classList.add('hidden')
+
+    })
+})
 document.querySelectorAll('.product-container').forEach(elm => {
         elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
             let data = JSON.parse(localStorage.getItem('cart'))

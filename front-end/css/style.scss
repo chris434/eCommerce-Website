@@ -127,10 +127,15 @@ main {
     font-size: 20px;
 }
 
-.collapse-text {
+.collapse {
     width: 100%;
     font-size: 2rem;
     margin: 2%;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
 
 .items {
@@ -304,7 +309,7 @@ form {
     font-size: 25px;
 }
 
-section {
+.product-items {
     div {
         width: 25%;
     }

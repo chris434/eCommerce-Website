@@ -151,10 +151,15 @@ main {
   font-size: 20px;
 }
 
-.collapse-text {
+.collapse {
   width: 100%;
   font-size: 2rem;
   margin: 2%;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 .items {
@@ -365,16 +370,16 @@ form small {
   font-size: 25px;
 }
 
-section div {
+.product-items div {
   width: 25%;
 }
 
-section img {
+.product-items img {
   width: 100%;
   margin-top: 0px;
 }
 
-section * {
+.product-items * {
   margin: 5%;
 }
 
