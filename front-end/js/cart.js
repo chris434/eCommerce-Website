@@ -2,7 +2,7 @@ import { formattedPrice, optionsTemplate, cartNumber } from './main.js'
 let parsedData = JSON.parse(localStorage.getItem('cart'))
 
 const createTemplate = () => {
-    if (!parsedData || parsedData.length > 0) {
+    if (parsedData && parsedData.length > 0) {
         const template = parsedData.map(productTemplate).join('')
         document.querySelector('.cart').innerHTML += totalTemplate()
         document.querySelector('.list-container').innerHTML = template
@@ -106,7 +106,11 @@ document.querySelector('#order-form').addEventListener('submit', async(e) => {
     const formDAta = new FormData(e.target)
     const contact = Object.fromEntries(formDAta.entries())
 
-    let bodyData = { contact: contact, products: ['5be1ed3f1c9d44000030b061'] }
+    let productIds = JSON.parse(localStorage.getItem('cart'))
+    productIds = productIds.map(item => {
+        return item.product._id
+    })
+    let bodyData = { contact: contact, products: productIds }
     console.log(bodyData)
 
     document.querySelectorAll('#order-form div').forEach(elm => {
@@ -124,11 +128,13 @@ document.querySelector('#order-form').addEventListener('submit', async(e) => {
                 body: JSON.stringify(bodyData)
             })
             const data = await response.json()
-            localStorage.setItem('orderConfirmed', JSON.stringify(data))
-            location.href = 'oder_response.html'
+            const { products, orderId } = data
+            localStorage.setItem('orderConfirmed', JSON.stringify({ products, orderId, totalPrice: totalPrice() }))
+            location.href = 'order-response.html'
         } catch (e) {
             console.log(e)
         }
+
     }
 })
 

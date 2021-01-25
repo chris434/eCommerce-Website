@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+h1 {
+    text-align: center;
+}
+
 header {
     ul {
         display: flex;
@@ -292,6 +296,31 @@ form {
     .product {
         display: block;
         margin: 3% 20% 3% 20%;
+    }
+}
+
+.order-container {
+    display: block;
+    font-size: 25px;
+}
+
+section {
+    div {
+        width: 25%;
+    }
+    img {
+        width: 100%;
+        margin-top: 0px;
+    }
+    * {
+        margin: 5%;
+    }
+}
+
+.order-info {
+    margin: 2%;
+    span {
+        margin: 20%;
     }
 }
 
