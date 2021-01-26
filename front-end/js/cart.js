@@ -18,7 +18,7 @@ const productTemplate = (data) => {
     ${optionsTemplate(lenses, data.selectedOption)}<button value="${_id}" class="delete">delete</button></div></div><hr>`
 }
 const totalTemplate = () => {
-    return `<div class="totalBox"><span>order summary</span><hr><div><span>Total</span><span class="total-price">${totalPrice()}</span></div><hr><button class="orange-button">order now</button></div>`
+    return `<div class="totalBox"><span>order summary</span><hr><div><span>Total</span><span class="total-price">${totalPrice()}</span></div><hr><a href="#order-form"><button id="order-now" class="orange-button">order now</button></a></div>`
 }
 const totalPrice = () => {
     let data = JSON.parse(localStorage.getItem('cart'))
@@ -50,6 +50,12 @@ document.querySelectorAll('.collapse').forEach(section => {
         header.classList.add('hidden')
 
     })
+})
+document.querySelector('#order-now').addEventListener('click', (e) => {
+    const form = document.querySelector('#order-form')
+    if (form.classList.contains('hidden')) {
+        form.classList.remove('hidden')
+    }
 })
 document.querySelectorAll('.product-container').forEach(elm => {
         elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
