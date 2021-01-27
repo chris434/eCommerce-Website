@@ -20,7 +20,7 @@ const productTemplate = (data) => {
     let { _id, name, price, description, imageUrl } = data
     const { text, value } = localData(_id)
     return `<div class="item-holder display"><a href="single-product.html?id=${_id}"><div class="zoom"><img class="item-holder-img" src="${imageUrl}"></div></a><h2><a href="single-product.html?id=${_id}">${name}</a></h2>
-       <hr><span>${formattedPrice(price)}</span><p>${description}</p><button class="add-to-cart" value="${value}"><span class="bnt-status"><i class="fas fa-shopping-cart"></i> ${text}</span></button></div>
+       <hr><span>${formattedPrice(price)}</span><p class="eclipse-text">${description}</p><button class="add-to-cart" value="${value}"><span class="bnt-status"><i class="fas fa-shopping-cart"></i> ${text}</span></button></div>
         `
 }
 

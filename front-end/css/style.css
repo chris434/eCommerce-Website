@@ -52,6 +52,12 @@ main {
   margin: 3% 25% 3% 25%;
 }
 
+.eclipse-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .item-holder h2 {
   margin: 5% 0% 0% 0%;
 }
@@ -66,9 +72,6 @@ main {
 }
 
 .item-holder p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin: 5% 0% 5% 0%;
 }
 
@@ -409,11 +412,20 @@ main {
 
 .order-container {
   display: block;
-  font-size: 25px;
+  font-size: 2rem;
+}
+
+.order-container * {
+  margin-top: 5%;
+}
+
+.order-container button {
+  font-size: 1.2rem;
+  margin-left: 5%;
 }
 
 .product-items div {
-  width: 25%;
+  width: 50%;
 }
 
 .product-items img {
@@ -426,11 +438,7 @@ main {
 }
 
 .order-info {
-  margin: 2%;
-}
-
-.order-info span {
-  margin: 20%;
+  margin: 5%;
 }
 
 @media (max-width: 907px) {
@@ -481,6 +489,23 @@ main {
   }
   #input-container {
     display: block;
+  }
+  .order-container h1 {
+    font-size: 1.5rem;
+  }
+  .order-container p {
+    font-size: 1.2rem;
+    margin: 2%;
+  }
+  .product-items div {
+    width: 50%;
+    margin: 0px;
+  }
+  .product-items h2 {
+    font-size: 1.5rem;
+  }
+  .product-items span {
+    font-size: 1rem;
   }
 }
 
