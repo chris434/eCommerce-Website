@@ -1,12 +1,13 @@
 import { formattedPrice, optionsTemplate, cartNumber } from './main.js'
 let parsedData = JSON.parse(localStorage.getItem('cart'))
-
+    //cart
 const createTemplate = () => {
     if (parsedData && parsedData.length > 0) {
         const template = parsedData.map(productTemplate).join('')
         document.querySelector('.cart').innerHTML += totalTemplate()
         document.querySelector('.list-container').innerHTML = template
         document.querySelector('.cart-empty').style.display = 'none'
+
         document.querySelector('#order-now').addEventListener('click', (e) => {
             const form = document.querySelector('#order-form')
             if (form.classList.contains('hidden')) {
@@ -20,7 +21,7 @@ const createTemplate = () => {
 
 const productTemplate = (data) => {
     const { _id, lenses, name, price, imageUrl } = data.product
-    return `<section class="product-holder"><div class="product-container"><div class="left-container"><a href="single-product.html?id=${_id}"><img src="${imageUrl}"></a><a href="single-product.html?id=${_id}"><span>${name}</span></a></div><div class="cart-info"><span>${formattedPrice(price)}</span>
+    return `<section class="product-holder"><div class="product-container"><div class="left-container"><a href="single-product.html?id=${_id}"><img src="${imageUrl}" alt="${name}"></a><a href="single-product.html?id=${_id}"><span>${name}</span></a></div><div class="cart-info"><span>${formattedPrice(price)}</span>
     ${optionsTemplate(lenses, data.selectedOption)}<button value="${_id}" class="delete">delete</button></div></div><hr></section>`
 }
 const totalTemplate = () => {

@@ -24,7 +24,7 @@ const productTemplate = (data) => {
     const { _id, lenses, name, price, description, imageUrl } = data
     document.title = name
     const { text, value, selected } = localData(_id)
-    return `<div class="item-holder"><img class="item-holder-img" src="${imageUrl}"><h2>${name}</h2>
+    return `<div class="item-holder"><img class="item-holder-img" src="${imageUrl}" alt="${name}"><h2>${name}</h2>
        <hr><div class="info-container"><span>${formattedPrice(price)}</span>${optionsTemplate(lenses,selected)}
        <button value=${value} class="add-to-cart"><span class="bnt-status"><i class="fas fa-shopping-cart"></i> ${text}</span></button></div><hr><p class=description>${description}</p></div>
         `

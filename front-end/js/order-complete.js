@@ -9,7 +9,7 @@ const createTemple = () => {
 }
 const productTemplate = (product) => {
     const { name, price, imageUrl } = product
-    return `<div><img src="${imageUrl}"><h2>${name}</h2><span>${formattedPrice(price)}</span><hr></div>`
+    return `<div><img src="${imageUrl}" alt="${name}"><h2>${name}</h2><span>${formattedPrice(price)}</span><hr></div>`
 }
 createTemple()
 document.querySelector('#home-page-bnt').addEventListener('click', (e) => {
