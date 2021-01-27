@@ -66,6 +66,9 @@ main {
 }
 
 .item-holder p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 5% 0% 5% 0%;
 }
 
@@ -93,6 +96,7 @@ main {
   background-color: whitesmoke;
   padding: 5%;
   margin: 5%;
+  margin-bottom: 10%;
 }
 
 .display img:hover {
