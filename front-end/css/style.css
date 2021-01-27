@@ -302,8 +302,6 @@ main {
 
 .cart-empty button {
   font-size: 20px;
-  background-color: #fd8024;
-  border: #fd8024 solid 2px;
   padding: 5%;
   margin-top: 10%;
 }

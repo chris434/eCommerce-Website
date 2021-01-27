@@ -7,6 +7,12 @@ const createTemplate = () => {
         document.querySelector('.cart').innerHTML += totalTemplate()
         document.querySelector('.list-container').innerHTML = template
         document.querySelector('.cart-empty').style.display = 'none'
+        document.querySelector('#order-now').addEventListener('click', (e) => {
+            const form = document.querySelector('#order-form')
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden')
+            }
+        })
     } else {
         document.querySelector('.cart-active').style.display = 'none'
     }
@@ -51,12 +57,7 @@ document.querySelectorAll('.collapse').forEach(section => {
 
     })
 })
-document.querySelector('#order-now').addEventListener('click', (e) => {
-    const form = document.querySelector('#order-form')
-    if (form.classList.contains('hidden')) {
-        form.classList.remove('hidden')
-    }
-})
+
 document.querySelectorAll('.product-holder').forEach(elm => {
         elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
             let data = JSON.parse(localStorage.getItem('cart'))
