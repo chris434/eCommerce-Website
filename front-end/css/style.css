@@ -155,6 +155,7 @@ main {
   width: 100%;
   font-size: 2rem;
   margin: 2%;
+  padding-top: 2.5%;
   cursor: pointer;
 }
 
@@ -217,14 +218,11 @@ main {
 
 .delete {
   background-color: #fd8024;
+  border: 1px #fd8024 solid;
   border-radius: 5%;
   outline: none;
   padding: 2%;
-}
-
-.delete :hover {
   cursor: pointer;
-  background-color: white;
 }
 
 .cart {
@@ -276,6 +274,7 @@ main {
 
 .orange-button:hover {
   background-color: transparent;
+  border: #fd8024 solid 2px;
   cursor: pointer;
 }
 
@@ -302,36 +301,48 @@ main {
   margin-top: 10%;
 }
 
-form {
+#input-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 2fr;
+      grid-template-columns: 2fr 2fr;
+}
+
+#order-form {
   font-size: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 2% 10% 5% 10%;
+  margin: 2% 5% 5% 10%;
 }
 
-form div {
+#order-form div {
   position: relative;
 }
 
-form div svg {
-  color: yellowgreen;
+#order-form div svg {
   position: absolute;
   margin-left: -30px;
   padding-top: 9px;
 }
 
-form input {
-  font-size: 30px;
+#order-form input {
+  font-size: 2rem;
   border: 2px black solid;
   padding-right: 40px;
 }
 
-form * {
+#order-form input[type="submit"] {
+  border-color: #fd8024;
+  padding: 2%;
+  font-size: 1.5rem;
+}
+
+#order-form * {
   margin: 2% 0% 0% 0%;
 }
 
-form small {
+#order-form small {
   color: red;
   visibility: hidden;
 }
@@ -346,7 +357,7 @@ form small {
   visibility: hidden;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .info-container {
     display: block;
   }
@@ -355,6 +366,33 @@ form small {
   }
   .info-container svg {
     margin: 0px;
+  }
+  #order-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 2% 5% 5% 5%;
+  }
+  #order-form input {
+    font-size: 1.5rem;
+    width: auto;
+  }
+  #order-form input[type="submit"] {
+    padding: 5%;
+  }
+  .cart-info {
+    display: block;
+    margin: 0% 5% 0% 5%;
+  }
+  .cart-info * {
+    margin: 5%;
   }
 }
 
@@ -398,10 +436,9 @@ form small {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 540px) {
   main,
-  .cart,
-  .cart-info {
+  .cart {
     display: block;
     margin: 0% 5% 0% 5%;
   }
@@ -428,14 +465,27 @@ form small {
     height: auto;
     width: auto;
     margin: -5%;
-    padding-bottom: 10%;
+    padding: 3% 10% 10% 10%;
     overflow: auto;
+    margin-top: 2.5%;
   }
   .totalBox div {
     padding: 0px;
   }
-  input {
-    width: 80%;
+  .totalBox span {
+    margin-top: 5%;
+  }
+  #input-container {
+    display: block;
+  }
+}
+
+@media (max-width: 280px) {
+  #order-form input {
+    font-size: 1.2rem;
+  }
+  #order-form div svg {
+    padding-top: 1px;
   }
 }
 /*# sourceMappingURL=style.css.map */

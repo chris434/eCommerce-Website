@@ -14,8 +14,8 @@ const createTemplate = () => {
 
 const productTemplate = (data) => {
     const { _id, lenses, name, price, imageUrl } = data.product
-    return `<div class="product-container"><div class="left-container"><a href="single-product.html?id=${_id}"><img src="${imageUrl}"></a><a href="single-product.html?id=${_id}"><span>${name}</span></a></div><div class="cart-info"><span>${formattedPrice(price)}</span>
-    ${optionsTemplate(lenses, data.selectedOption)}<button value="${_id}" class="delete">delete</button></div></div><hr>`
+    return `<section class="product-holder"><div class="product-container"><div class="left-container"><a href="single-product.html?id=${_id}"><img src="${imageUrl}"></a><a href="single-product.html?id=${_id}"><span>${name}</span></a></div><div class="cart-info"><span>${formattedPrice(price)}</span>
+    ${optionsTemplate(lenses, data.selectedOption)}<button value="${_id}" class="delete">delete</button></div></div><hr></section>`
 }
 const totalTemplate = () => {
     return `<div class="totalBox"><span>order summary</span><hr><div><span>Total</span><span class="total-price">${totalPrice()}</span></div><hr><a href="#order-form"><button id="order-now" class="orange-button">order now</button></a></div>`
@@ -57,7 +57,7 @@ document.querySelector('#order-now').addEventListener('click', (e) => {
         form.classList.remove('hidden')
     }
 })
-document.querySelectorAll('.product-container').forEach(elm => {
+document.querySelectorAll('.product-holder').forEach(elm => {
         elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
             let data = JSON.parse(localStorage.getItem('cart'))
             data = data.filter(elm => {
