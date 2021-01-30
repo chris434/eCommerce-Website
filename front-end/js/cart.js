@@ -1,6 +1,6 @@
 import { formattedPrice, optionsTemplate, cartNumber } from './main.js'
 let parsedData = JSON.parse(localStorage.getItem('cart'))
-    //cart
+    //cart here
 const createTemplate = () => {
     if (parsedData && parsedData.length > 0) {
         const template = parsedData.map(productTemplate).join('')
@@ -60,26 +60,27 @@ document.querySelectorAll('.collapse').forEach(section => {
 })
 
 document.querySelectorAll('.product-holder').forEach(elm => {
-        elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
-            let data = JSON.parse(localStorage.getItem('cart'))
-            data = data.filter(elm => {
-                if (elm.product._id != e.target.value) {
-                    return elm
-                }
-            })
-            localStorage.setItem('cart', JSON.stringify(data))
-            document.querySelector('.total-price').innerHTML = totalPrice()
-            cartNumber()
-            elm.remove()
-            if (data.length == 0) {
-                document.querySelector('.cart-active').style.display = 'none'
-                document.querySelector('.cart-empty').style.display = 'flex'
+    elm.querySelector('.cart-info .delete').addEventListener('click', (e) => {
+        let data = JSON.parse(localStorage.getItem('cart'))
+        data = data.filter(elm => {
+            if (elm.product._id != e.target.value) {
+                return elm
             }
         })
+        localStorage.setItem('cart', JSON.stringify(data))
+        document.querySelector('.total-price').innerHTML = totalPrice()
+        cartNumber()
+        elm.remove()
+        if (data.length == 0) {
+            document.querySelector('.cart-active').style.display = 'none'
+            document.querySelector('.cart-empty').style.display = 'flex'
+        }
     })
-    //form
+})
 
+//form start here
 const validEmail = (email) => {
+    //regular expression from https://www.codegrepper.com/app/profile.php?id=52244 grepper is required to view this code
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return reg.test(String(email).toLowerCase());
 }
@@ -151,7 +152,7 @@ document.querySelector('#order-form').addEventListener('submit', async(e) => {
             localStorage.setItem('orderConfirmed', JSON.stringify({ products, orderId, totalPrice: totalPrice() }))
             location.href = 'order-response.html'
         } catch (e) {
-            console.log(e)
+            console.log(new Error(e))
         }
 
     }
